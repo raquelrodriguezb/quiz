@@ -1,16 +1,22 @@
 *                    { margin: 0; padding: 0; }
-body                 { font: 16px Georgia, serif; }
+body                 { font: 16px Verdana, serif; }
 
-#page-wrap           { margin: 2% auto; color: white; }
+#page-wrap           { margin: 1% auto; color: white;  }
 #page-wrap > .main   { border: 1px solid #999; padding: 1%; 
-	                   margin-bottom: 1px; color: black;}
+	                   margin-bottom: 1px; color: black; }
+    
+#page-wrap  > footer.main, header.main#h1  { padding: 20px; }                
 
 section > div        { padding: 20px; }
-header, nav, section { background: #eee; text-align: center;}
-footer               { background: #eee; text-align: center;}
+
+section 		 	 { background: #eee; text-align: center;}
+nav, header,footer   { background: #C590F6; text-align: center; }
 nav span             { margin: 0px 10px 0px 0px;}
 table 				 { width: 70%; margin: 0 auto;}
-td					 { text-align: left;}
-footer               { background: #eee; text-align:center}
+td, nav span 		 { text-align: left;}
 
+
+
+}
 #ErrorMsgs           { color: #f61; font-size: smaler}
+.right 				 { float: right;}

@@ -2,7 +2,14 @@ body { background: #999; }
 
 #page-wrap:after { content: "Wide Layout"; }
 
-nav       { float: left; width: 15%; height: 200px ;}
-nav span  { margin: 0px 100px 0px 0px;}
-section   { float: right; width: 80%; height: 200px ;}
-footer    { clear: both;  display: block; }
+nav       { float: left; width: 15%; height: 350px ;}
+
+nav span  { 
+  display: inline-block;
+  text-align: left;
+  margin-top: 10px;
+  width: 90%;
+  padding: .25em;
+}
+section   { float: right; width: 80%; height: 350px ;}
+footer    { clear: both;  display: block;} 
