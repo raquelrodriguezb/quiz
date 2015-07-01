@@ -10,7 +10,6 @@ var session = require('express-session');
 
 var routes = require('./routes/index');
 
-
 var app = express();
 
 // view engine setup
@@ -26,21 +25,55 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser('Quiz 2015'));
 app.use(session());
+
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// logout por tiempo  
+app.use(function(req, res, next) {
+
+  if (req.session && req.session.tiempo){
+
+      if (new Date().getTime() - req.session.tiempo>120000)
+      {
+        delete req.session.user;
+      }
+  }
+  if (req.session.user){
+          //si hay session actualiza el tiempo de activiad
+         req.session.tiempo=new Date().getTime();
+  }else{
+     if (req.session.tiempo>0){
+          //este es el caso de logout por tiempo ponemos  a 0 sin borrar,para avisar al usuario
+          req.session.tiempo=0;
+           // este caso es no hay usuario, ya mostramos el mensaje logout por tiempo de session 
+     }else{
+      // este caso no hay usuario logado y ya avisamos al usuario  
+      // borramos tiempo para que el mensaje solo lo muestre una vez
+          delete req.session.tiempo;
+     }
+  }
+ 
+ next();
+});
 // Helpers dinamicos:
 app.use(function(req, res, next) {
 
-  // guardar path en session.redir para despues de login
-  if (!req.path.match(/\/login|\/logout/)) {
-    req.session.redir = req.path;
+  // si no existe lo inicializa
+  if (!req.session.redir) {
+    req.session.redir = '/';
   }
 
+  // guardar path en session.redir para despues de login
+  if (!req.path.match(/\/login|\/logout|\/user/)) {
+    req.session.redir = req.path;
+  }
+  
   // Hacer visible req.session en las vistas
   res.locals.session = req.session;
   next();
 });
+
 
 app.use('/', routes);
 

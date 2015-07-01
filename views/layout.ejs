@@ -16,9 +16,12 @@
 <body>
 <div id="page-wrap">
   <header class="main" id="h1">
-      <%if(!session.user){%>
+  <%if(!session.user){%>
+      <%if(!session.tiempo && session.tiempo===0){%>
+            <script type ="text/javascript"> alert ("Destruida la sesión. Supero el tiempo posible sin tener actividad, fijado en 2 minutos."); </script>
+      <%}%>  
       <span class="right"><a href="/login">Login</a></span>
-    <%}else{%>
+<%}else{%>
       <span class="right"> <%=session.user.username%> <a href="/logout">Logout</a></span>
     <%}%>
     <h2>Quiz<span>: el juego de las preguntas</span></h2>
