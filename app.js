@@ -46,10 +46,9 @@ app.use(function(req, res, next) {
      if (req.session.tiempo>0){
           //este es el caso de logout por tiempo ponemos  a 0 sin borrar,para avisar al usuario
           req.session.tiempo=0;
-           // este caso es no hay usuario, ya mostramos el mensaje logout por tiempo de session 
-     }else{
+      }else{
       // este caso no hay usuario logado y ya avisamos al usuario  
-      // borramos tiempo para que el mensaje solo lo muestre una vez
+      // borramos tiempo, para que el mensaje solo lo muestre una vez
           delete req.session.tiempo;
      }
   }

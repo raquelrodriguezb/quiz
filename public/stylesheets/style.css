@@ -13,6 +13,8 @@ section 		 	 { background: #eee; text-align: center;}
 nav, header,footer   { background: #C590F6; text-align: center; }
 nav span             { margin: 0px 10px 0px 0px;}
 table 				 { width: 70%; margin: 0 auto;}
+.tablecomment 		 { width: 100%; margin: 0 auto;}
+
 td, nav span 		 { text-align: left;}
 
 

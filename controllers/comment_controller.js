@@ -14,6 +14,16 @@ exports.load = function(req, res, next, commentId) {
     }
   ).catch(function(error){next(error)});
 };
+//GET /comments es para mostrar toda la tabla de comentarios
+exports.index = function(req, res, next) {
+  models.Comment.findAll().then(function(comment) {
+      if (comment) {
+        res.render('comments/index.ejs', {comment: comment, errors: []});
+      } else{next(new Error('No existen comentarios' ))}
+    }
+  ).catch(function(error){next(error)});
+};
+
 
 // GET /quizes/:quizId/comments/new
 exports.new = function(req, res) {
